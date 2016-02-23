@@ -57,13 +57,6 @@ body{
 
 
 /* Start format the logo at the top, before the navbar */
-img.my-css-logo {
-    width: 25%;
-    margin: 0px;
-    border: 0px;
-    padding: 0px 10px 0px 10px;
-    position:relative;
-}
 a.my-css-logo{
    background-image: url("images/logo_heart.png");
    background-repeat: no-repeat;
