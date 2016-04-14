@@ -1,0 +1,94 @@
+<html>
+
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<script   src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
+
+<link href="myStyles.css" rel="stylesheet">
+<script src="functionality.js"></script>
+
+   <title>Verilog page</title>
+</head>
+
+<body>
+<div class="container">
+   <div class="js-navigationBar">
+      <nav class="navbar navbar-default navbar-fixed-top nav-justified" role="navigation">
+         <div class="container-fluid">
+            <div class="navbar-header"> <!-- Start of collapsed navbar -->
+               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+               </button> 
+            </div> <!-- End of collapsed navbar -->
+            <div class="collapse navbar-collapse" id="myNavbar"> <!-- Start un-collapsed navbar -->
+               <ul class="nav navbar-nav navbar-left">
+                  <li class="my-js-navigationTab active" id="my-js-informationTab-Verilog"><a href="#myVerilog" rel="" id="anchorVerilog" class="anchorLink my-js-smoothScrolling">Verilog</a></li>
+                  <li class="my-js-navigationTab" id="my-js-informationTab-XX"><a href="#myXX" rel="" id="anchorXX" class="anchorLink my-js-smoothScrolling"></a></li>
+               </ul>
+            </div> <!-- End un-collapsed navbar -->
+         </div>
+      </nav>
+   </div>   
+   <div id="content">
+      <h1> Hardware Description Language (HDL) </h1>
+      A Hardware Description Language (HDL) is a specialized computer language used to describe the structure and behavior of electronic circuits, for example: digital logic circuits, calculators, microprocessors, application-specific integrated circuits, etc. 
+      A hardware description language allows hardware designers a way to formally descrive electronic circuits, allowing for the automated analysis and simulation of electronic circuits. To formally describe electronic circuits allows for the synthesis of a HDL description into a netlist, which is a specification of physical electronic components and how they are connected together; then the netlist can be placed and routed to produce the set of masks used to create an integrated circuit.
+      <br>
+      There are two major hardware description languages (HDL) used in the industry for hardware desiging: VHDL and Verilog. Here we will focus on Verilog. 
+      
+      Verilog is the first major HDL to offer object orientation. 
+      
+      In contrast to most software programming languages, HDLs also include an explicit notion of time, which is a primary attribute of hardware. In Verilog, the syntax used to wait some time is a hashtag symbol followed by the number of nanoseconds to wait, and then ends with a semi-colon. For example, the following like of code would make the simulation wait for 100 nanoseconds:  
+      <br>
+       #100;
+      <br>
+      There are different types of description: "dataflow, behavioral and structural". 
+      
+      HDL simulation enabled engineers to work at a higher level of abstraction than simulation at the schematic level. 
+      
+      The latest iteration of Verilog, formally known as IEEE 1800-2005 SystemVerilog, introduces many new features (classes, random variables, and properties/assertions) to address the growing need for better test bench randomization, design hierarchy, and reuse
+      
+      
+      To simulate an HDL model, an engineer writes a top-level simulation environment (called a test bench). At minimum, a testbench contains an instantiation of the model (called the Unit Under Test or UUT), pin/signal declarations for the model's I/O, and a clock waveform. The testbench code is event driven: the engineer writes HDL statements to implement the (testbench-generated) reset-signal, to model interface transactions (such as a host–bus read/write), and to monitor the DUT's output. An HDL simulator — the program that executes the testbench — maintains the simulator clock, which is the master reference for all events in the testbench simulation. Events occur only at the instants dictated by the testbench HDL (such as a reset-toggle coded into the testbench), or in reaction (by the model) to stimulus and triggering events. Modern HDL simulators have full-featured graphical user interfaces, complete with a suite of debug tools. These allow the user to stop and restart the simulation at any time, insert simulator breakpoints (independent of the HDL code), and monitor or modify any element in the HDL model hierarchy. 
+      
+      <my-book>Book</my-book>
+      
+      <h1>Verilog</h1>
+      
+      Verilog allows us to design a digital design at different levels: 
+      <ul>
+         <li>Behavior Level </li> 
+         <li>Register Transfer Level (RTL) </li> 
+         <li>Gate level </li> 
+         <li>switch level </li> 
+      </ul>
+      
+      <h2>Behavioral level</h2>
+This level describes a system by concurrent algorithms (Behavioral). Each algorithm itself is sequential, that means it consists of a set of instructions that are executed one after the other. Functions, Tasks and Always blocks are the main elements. There is no regard to the structural realization of the design.
+
+ 	 	<h2>Register-Transfer Level</h2>
+Register-Transfer Level (RTL) is a design abstraction which models a synchronous digital circuit in terms of the flow of digital signals (data) between hardware registers, and the logical operations performed on those signals. RTL design contains exact timing bounds: operations are scheduled to occur at certain times. Register-Transfer-Level abstraction is used to create high-level representations of a circuit, from which lower-level representations (like Gate Level representations) and ultimately actual wiring can be derived. 
+
+
+
+ 	 	<h2>Gate Level</h2>
+Within the logic level the characteristics of a system are described by logical links and their timing properties. All signals are discrete signals. They can only have definite logical values (`0', `1', `X', `Z`). The usable operations are predefined logic primitives (AND, OR, NOT, etc. gates). Gate level code is generated by tools like synthesis tools and this netlist is used for gate level simulation and for backend.
+      
+      
+   </div>
+</div>
+
+
+</body>
+</html>
