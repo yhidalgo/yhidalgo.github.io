@@ -44,7 +44,7 @@
       <h1> SER232 Project 3: Calculator </h1>
 
 <p>
-Build a Verilog module named "calculator" that takes in two signed 16-bit numbers named "in1" and "in2" and performs the following functions depending on the value of another 4-bit input named "opCode" (see table below). Be aware that the opCode is not signed, like the inputs A and B of project 2. The outputs of the module "calculator" must be a signed 16-bit number named "result", and a 1-bit "overflow". Be aware that the value of "overflow" doesn't always get calculated the same way, it depends on the operation (see table below for more info and examples). The value of the output "overflow" will be one if an overflow occurred or the value of "result" is not completely accurate or correct; else the output "overflow" will be zero. 
+Build a Verilog module named "calculator" that takes in two signed 16-bit numbers named "in1" and "in2" and performs the following functions depending on the value of another 4-bit input named "opCode" (see table below). Be aware that the opCode is not signed like the inputs A and B of project 2 were. The outputs of the module "calculator" must be a signed 16-bit number named "result", and a 1-bit "overflow". Be aware that the value of "overflow" doesn't always get calculated the same way, it depends on the operation (see table below for more info and examples). The value of the output "overflow" will be one if an overflow occurred or the value of "result" is not completely accurate or correct; else the output "overflow" will be zero. 
 </p>
 <p>
 Name the new project you create Project3_FirstName_LastName, using your own name. For instance, I would name my project "Project3_Yoalli_Hidalgo". Once you are done with the code, submit the whole project folder compressed (as .zip, .rar, or .7z), which must contain all the files Xilinx ISE generated and of course make sure it contains the Verilog source code files (implementation and your own test bench, both with extension .v).
@@ -62,7 +62,7 @@ Also, be aware that unsigned N-bit registers can store values from 0 to 2N-1. Wh
 </p>
 <table style="width:100%">
   <tr>
-    <td>opCode</td> 
+    <td>opCode  </td> 
     <td>Operation that has to be performed</td>
   </tr>
   <tr>
@@ -130,9 +130,63 @@ in1='b0000000000000001; opCode='b0111; expectedOverflow='b0; result='b1111111111
 <h2>Your test bench: </h2>
 
 <p>
-Your test bench must show a good effort in testing. You must test all the opCodes. Test when in1 is positive and when it is negative; also test when in2 is positive and when it is negative. Test values that produce overflow, and also values that don't produce overflow. Also, make sure to test border (or corner) cases, like: 32767, 32766, 1, 0, -1, -32767, -32768. 
-</p>      
-
+Your test bench must show a good effort in testing. You must test all the opCodes. Test when in1 is positive and when it is negative, and when in2 is positive and when it is negative. Test values that produce overflow, and also values that don't produce overflow. Also, pay attention to interesting values, like border (or corner) cases, like: 32767, 32766, 1, 0, -1, -32767, -32768. 
+</p>    
+<p> 
+There must be minimum 23 test cases covering these scenarios:
+<ul>
+   <li>one test per bitwise operation,</li>
+   <li>two test cases (one not producing overflow and another producing overflow) for each of the operations of: 
+   <ul>
+      <li>increment,</li>
+      <li>decrement</li>
+      <li>divide </li>
+   </ul>
+   <li>four test cases for multiplication:
+   <ul>
+      <li>one not producing overflow when in1 is positive</li>
+      <li>one not producing overflow when in1 is negative,</li>
+      <li>one producing overflow when the result is too positive</li>
+      <li>one producing overflow when the result is too negative</li>
+   </ul>
+   </li>
+   <li>six test cases for addition: 
+   <ul>
+      <li>two test cases that produce overflow: 
+      <ul>
+         <li>one producing overflow when the result is too positive</li>
+         <li>one producing overflow when the result is too negative</li>
+      </ul></li>
+      <li>four test cases that don't produce overflow:
+      <ul>
+         <li>one where in1 is positive and in2 is positive</li>
+         <li>one where in1 is positive and in2 is negative</li>
+         <li>one where in1 is negative and in2 is positive</li>
+         <li>one where in1 is negative and in2 is negative</li>
+      </ul>
+      </li>
+   </ul>
+   </li>
+   <li>six test cases for subtraction:
+   <ul>
+      <li>two test cases that produce overflow: 
+      <ul>
+         <li>one producing overflow when the result is too positive</li>
+         <li>one producing overflow when the result is too negative</li>
+      </ul>
+      </li>
+      <li>four test cases that don't produce overflow:
+      <ul>
+         <li>one where in1 is positive and in2 is positive</li>
+         <li>one where in1 is positive and in2 is negative</li>
+         <li>one where in1 is negative and in2 is positive</li>
+         <li>one where in1 is negative and in2 is negative</li>
+      </ul>
+      </li>
+   </ul>
+   </li>
+</ul>
+</p>
 <p>
 Include in your test bench a $monitor statement in order to keep track and print in console changes in the inputs and outputs. Alternatively you could have $display statements instead. For example: 
 </p>
