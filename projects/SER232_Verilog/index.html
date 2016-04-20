@@ -83,50 +83,57 @@ Also, be aware that unsigned N-bit registers can store values from 0 to 2N-1. Wh
   </tr>
   <tr>
     <td>0100</td> 
-    <td>Bitwise AND. Even though in1, in2 and result are declared as signed numbers, when applying the bitwise operations they are taken as raw bits. A bitwise operation (https://en.wikipedia.org/wiki/Bitwise_operation ) is when the operation is applied to the individual bits. In this case, there will be an AND gate operation between the individual bits of in1 and the individual bits of in2; such that an AND logic will be applied to the first bit of in1 and the first bit of in2 and the output of that AND will be the first bit of result; an AND logic will be applied to the bit of position n of in1 and the bit of position n of in2 and the output of that AND will be the bit of position n of result; and so on. For example:</br>
-in1 = 1010110011110000</br>
-in2 = 1100101000110011</br>
-result = 1000100000110000</br>
+    <td>Bitwise AND. Even though in1, in2 and result are declared as signed numbers, when applying the bitwise operations they are taken as raw bits. A bitwise operation (https://en.wikipedia.org/wiki/Bitwise_operation ) is when the operation is applied to the individual bits. In this case, there will be an AND gate operation between the individual bits of in1 and the individual bits of in2; such that an AND logic will be applied to the first bit of in1 and the first bit of in2 and the output of that AND will be the first bit of result; an AND logic will be applied to the bit of position n of in1 and the bit of position n of in2 and the output of that AND will be the bit of position n of result; and so on.</br>
+      For example:</br>
+         in1 = 1010110011110000</br>
+         in2 = 1100101000110011</br>
+         result = 1000100000110000</br>
 Bitwise AND, XOR and OR operations can't overflow, so overflow=0 by default.
 </td>
   </tr>
   <tr>
     <td>0101</td> 
-    <td>Bitwise XOR. Similar to explanation above, but with an XOR (also known as exclusive OR) operation instead. Example:</br>
-    in1 = 1010110011110000</br>
-    in2 = 1100101000110011</br>    
+    <td>Bitwise XOR. Similar to explanation above, but with an XOR (also known as exclusive OR) operation instead. </br> 
+      Example:</br>
+         in1 = 1010110011110000</br>
+         in2 = 1100101000110011</br>    
 result = 0110011011000011</br>
 </td>
   </tr>
   <tr>
     <td>0110</td> 
-    <td>Bitwise OR. Similar to explanation above, but with an OR operation instead. Example:
-in1 = 1010110011110000
-in2 = 1100101000110011     
-result = 1110111011110011
+    <td>Bitwise OR. Similar to explanation above, but with an OR operation instead.  </br>
+      Example: </br>
+         in1 = 1010110011110000 </br>
+         in2 = 1100101000110011 </br>
+         result = 1110111011110011 </br>
 </td>
   </tr>
   <tr>
     <td>0111</td> 
     <td>One's Complement in1. Perform one's complement, by inverting bits (do not add one afterwards, because that would be two's complement). 
-Complement operation can't overflow, so overflow=0 by default.
-Examples: 
+Complement operation can't overflow, so overflow=0 by default.</br>
+Examples: </br>
 in1='b00000000000000; opCode='b0111; expectedOverflow='b0; result='b1111111111111111;
-
-in1='b0000000000000001; opCode='b0111; expectedOverflow='b0; result='b1111111111111110; 
+</br></br>
+in1='b0000000000000001; opCode='b0111; expectedOverflow='b0; result='b1111111111111110; </br>
 </td>
   </tr>
   <tr>
     <td>1000</td> 
-    <td>Increment in1 by 1. Examples: if in1=3, then result =4. If in1=-3, then result =-2.</td>
+    <td>Increment in1 by 1. </br>
+            Examples: </br>
+               if in1=3, then result =4. </br>
+               if in1=-3, then result =-2. </br>
+    </td>
   </tr>
   <tr>
     <td>1001</td> 
-    <td>Decrement in1 by 1. Examples: if in1=3, then result =2. If in1=-3, then result =-4.</td>
-  </tr>
-  <tr>
-    <td></td> 
-    <td></td>
+    <td>Decrement in1 by 1.  </br>
+      Examples:  </br>
+         if in1=3, then result =2  </br>
+         if in1=-3, then result =-4. </br>
+      </td>
   </tr>
 </table>
 
