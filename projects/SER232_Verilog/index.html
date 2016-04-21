@@ -97,7 +97,7 @@ Bitwise AND, XOR and OR operations can't overflow, so overflow=0 by default.
       Example:</br>
          in1 = 1010110011110000</br>
          in2 = 1100101000110011</br>    
-result = 0110011011000011</br>
+         result = 0110011011000011</br>
 </td>
   </tr>
   <tr>
@@ -111,7 +111,7 @@ result = 0110011011000011</br>
   </tr>
   <tr>
     <td>0111</td> 
-    <td>One's Complement in1. Perform one's complement, by inverting bits (do not add one afterwards, because that would be two's complement). 
+    <td>One's Complement of in1. Perform one's complement, by inverting bits (do not add one afterwards, because that would be two's complement). 
 Complement operation can't overflow, so overflow=0 by default.</br>
 Examples: </br>
 in1='b00000000000000; opCode='b0111; expectedOverflow='b0; result='b1111111111111111;
@@ -144,9 +144,16 @@ in1='b0000000000000001; opCode='b0111; expectedOverflow='b0; result='b1111111111
 Your test bench must show a good effort in testing. You must test all the opCodes. Test when in1 is positive and when it is negative, and when in2 is positive and when it is negative. Test values that produce overflow, and also values that don't produce overflow. Also, pay attention to interesting values, like border (or corner) cases, like: 32767, 32766, 1, 0, -1, -32767, -32768. 
 </p>    
 <p> 
-There must be minimum 23 test cases covering these scenarios:
+There must be minimum 26 test cases covering these scenarios:
 <ul>
-   <li>one test per bitwise operation,</li>
+   <li>one test case for each bitwise operation: 
+   <ul>
+      <li>AND</li>
+      <li>OR</li>
+      <li>XOR</li>
+      <li>One's complement of in1</li>
+   </ul>
+   </li>
    <li>two test cases (one not producing overflow and another producing overflow) for each of the operations of: 
    <ul>
       <li>increment,</li>
