@@ -214,6 +214,11 @@ There must be minimum 26 test cases covering these scenarios:
    </li>
 </ul>
 </p>
+
+<p>
+Please remember that you need to add some wait time in nanoseconds (for example: "#100;") between each test case. Because that statement simulates a wait period of time in nanoseconds in which the values of in1, in2 and opCode won't change, they will hold whatever value you just assigned to them. Remember you learned that hardware circuits have delays from the time the inputs are given until the time the output is being produced, so Verilog simulates that. If you don't add that wait time, the values of in1, in2 and opCode will change so quickly that you won't allow enough time for your implementation to produce an output. So you will only be able to see the output of the last test case. 
+</p>
+
 <p>
 Include in your test bench a $monitor statement in order to keep track and print in console changes in the inputs and outputs. Alternatively you could have $display statements instead. For example: 
 </p>
