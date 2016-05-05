@@ -220,11 +220,29 @@ Please remember that you need to add some wait time in nanoseconds (for example:
 </p>
 
 <p>
+Example of a test case that sets in1 to positive and in2 to negative, and then makes sure the output is correct: <br />
+
+<span class="css-code">
+in1 = 16'b0000000000000001; //in1 is positive <br />
+in2 = 16'b1000000000000001; //in2 is negative <br />
+opCode=4'b0000;  <br />
+#100; <br />
+if( (overflow == 1'b0) && (result == 16'b1000000000000010) ) { <br />
+   $display("Correct"); <br />
+} else { <br />
+   $display("Incorrect"); <br />
+} <br />
+</span>
+</p>
+
+<p>
 Include in your test bench a $monitor statement in order to keep track and print in console changes in the inputs and outputs. Alternatively you could have $display statements instead. For example: 
 </p>
 <span class="css-code">
 $monitor("opCode( %b ), in1( %d ), in2( %d ), result( %d ), overflow( %b )",  opCode, in1, in2, result, overflow); 
 </span>
+
+
 
 
 <h2>Instructor's test bench: </h2>
