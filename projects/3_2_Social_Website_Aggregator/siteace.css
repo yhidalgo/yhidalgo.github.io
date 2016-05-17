@@ -1,0 +1,11 @@
+/* CSS declarations go here */
+.hidden_div{
+	display:none;
+}
+
+.css-upvote{
+   color:green;
+}
+.css-downvote{
+   color:red;
+}

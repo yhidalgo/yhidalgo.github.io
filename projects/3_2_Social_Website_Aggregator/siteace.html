@@ -1,0 +1,183 @@
+<head>
+  <title>Social Website Aggregator</title>
+</head>
+
+<body>
+
+<!-- 
+		{{> navbarTemplate}}
+	<div class="container">
+		{{> website_form}}
+		{{> website_list}}
+	</div>
+	 -->
+	 
+</body>
+
+<template name="myApplicationLayout">
+	{{> yield "navbar"}}
+	{{> yield "main"}}
+</template>
+
+<template name="navbarTemplate">
+	<!-- navbar  - you will be putting the login functions here -->
+	<nav class="navbar navbar-default">
+      <div class="container-fluid">
+         <div class="navbar-header">
+            <button type="button" class="navbar-toggle colapsed" data-toggle="collapse" data-target="#my-CollapsableNavbarElements" aria-expanded="false" > 
+	            <span class="sr-only">Toggle navigation bar</span>
+   	         <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	         </button>
+            <a class="navbar-brand" href="#">Social Website Aggregator</a>
+	         <form class="navbar-form navbar-right" role="search">
+               {{> loginButtons}}
+	         </form>
+         </div>
+         <div class="collapse navbar-collapse" id="my-CollapsableNavbarElements">
+   	      <ul class="nav nav-tabs">
+   	         <!--
+	            <li class="active"><a href="/">Main<span class="sr-only">(current)</span></a></li>
+	            -->
+	            <li>
+	               <form class="navbar-form navbar-left" role="search">
+	                  <div class="form-group">
+	                     <input type="text" class="form-control" placeholder="Search">
+	                  </div>
+	                  <button type="submit" class="btn btn-default">Search</button>
+	               </form>
+	            </li>
+            </ul>
+         </div>
+      </div>
+	</nav>
+</template> <!-- End of navbarTemplate -->
+
+<template name="website_form">
+	<a class="btn btn-default js-toggle-website-form" href="#" data-toggle="tooltip" title="Add website">
+  		<span class="glyphicon glyphicon-plus" aria-hidden="true"> Add website </span>
+	</a>
+	<div id="js-website_form" class="hidden_div">
+		<form class="js-save-website-form">
+		  <div class="form-group">
+		    <label for="url">Site address</label>
+		    <input type="text" class="form-control" id="url" placeholder="http://www.mysite.com">
+		  </div>
+		  <div class="form-group">
+		    <label for="title">Title</label>
+		    <input type="text" class="form-control" id="title" placeholder="Mysite">
+		  </div>
+		    <div class="form-group">
+		    <label for="description">Description</label>
+		    <input type="text" class="form-control" id="description" placeholder="I found this site really useful for ...">
+		  </div>
+
+		  <button type="submit" class="btn btn-default">Submit</button>
+		</form>
+	</div>
+</template>
+
+<!-- template that displays several website items -->
+<template name="website_list">
+  {{#if currentUser}}
+      {{>website_form}}
+  {{/if}}
+	<ol>
+	{{#each websites}}
+	{{>website_item}}
+	{{/each}}
+	</ol>
+</template>
+
+<!-- template that displays individual website entries -->
+<template name="website_item">
+<li>
+   <div class="row">
+      <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1">
+         <div class="row">
+            <a href="#" class="btn btn-default js-upvote" data-toggle="tooltip" title="Upvote">
+               <span class="glyphicon glyphicon-arrow-up css-upvote" aria-hidden="true"></span>
+            </a>
+         </div>
+         <div class="row">
+            <a href="#" class="btn btn-default js-downvote" data-toggle="tooltip" title="Downvote">
+               <span class="glyphicon glyphicon-arrow-down css-downvote" aria-hidden="true"></span>
+            </a>
+         </div>
+      </div>
+      <div class="col-xs-9 col-sm-2 col-md-2 col-lg-2">
+         Votes: {{voteCount}}
+         <br />
+      	since {{formatDate createdOn}}
+      </div>
+      <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+      	<a href="singleWebsiteDetails/{{_id}}">{{title}}</a>
+      	<p>
+      		{{description}}
+      	</p>
+	   </div>
+	</div>
+</li>
+</template>
+
+<template name="singleWebsiteDetails">
+   <div class="container">
+      <div class="row">
+      	<h3><a href="{{url}}">{{title}}</a></h3>
+      	<p>
+      		{{description}}
+      	</p>
+      	<p>
+      		<strong>{{voteCount}}</strong> total votes collected since <strong>{{createdOn}}</strong>
+      	</p>
+	   </div>
+      <div class="row">
+         {{#if currentUser}}
+            {{>addCommentTemplate this}}
+            <!--"this" will pass the current website data to the sub-template -->
+         {{/if}}
+	   </div>
+      <div class="row">
+         <h4>Comments: </h4>
+      </div>
+      <div class="row">
+         {{#each comments}}
+            {{>displayCommentTemplate}}
+         {{/each}}
+	   </div>
+   </div>
+</template>
+
+<template name="addCommentTemplate">
+<div class="row">
+	<a class="btn btn-default js-toggle-comment-form" href="#" data-toggle="tooltip" title="Add comment">
+  		<span class="glyphicon glyphicon-plus" aria-hidden="true"> Add Comment </span>
+	</a>
+	<div id="js-comment_form">
+		<form class="js-save-comment-form">
+		  <div class="form-group">
+		    <label>User: </label>
+		    <label>  {{username}}</label>
+		    <input type="hidden" class="form-control" id="website_id" value="{{_id}}">
+		  </div>
+		  <div class="form-group">
+		    <label for="commentTitle">Comment Title</label>
+		    <input type="text" class="form-control" id="commentTitle" placeholder="Title" value="Nice">
+		  </div>
+		    <div class="form-group">
+		    <label for="commentBody">Comment Body</label>
+		    <input type="text" class="form-control" id="commentBody" placeholder="I like this site because ..." value="I like it too">
+		  </div>
+		  <button type="submit" class="btn btn-default">Submit</button>
+		</form>
+	</div>
+</div>
+</template>
+
+<template name="displayCommentTemplate">
+   <div class="row">
+      <p><strong>{{commenter}}</strong> says: <strong>{{title}}</strong></p>
+      <p>{{body}}</p>
+   </div>
+</template> <!-- End displayCommentTemplate -->
