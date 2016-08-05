@@ -10,7 +10,7 @@ var dataAboutMe = {
          },{
             projectName : "Social Website Aggregator",
             projectDescription : "Website with persistent data (MongoDB) shared among different users concurrently that gets updated without the user refreshing the page (Meteor framework functionality). It also has user authentication for extra features, like add a website to the list. This site is deployed in Heroku (because github pages wouldn't support it) for free, which has the the limitation of being accessible at most 18 hours per day, because the free account is not meant to be used for production. ",
-            projectUsed : ["JavaScript", "HTML", "CSS", "jQuery", "MongoDB", "Meteor framework (which includes Node.js)", "Spacebars.js (template library that provides more functionality than Handlebars.js; it is used by default by Meteor)"],
+            projectUsed : ["JavaScript", "HTML", "CSS", "jQuery", "MongoDB", "Meteor framework (which includes Node.js)", "Spacebars (template language inspired by Handlebars; used by default by Meteor)"],
             projectUrl : "https://social-website-aggregator.herokuapp.com/"
          }
       ]
