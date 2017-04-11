@@ -1,0 +1,88 @@
+body {
+    background-color : #FFFFFF;
+    font-family : "Comic Sans MS", cursive, sans-serif;
+    font-size : 16px;
+    width : 100%;
+    padding : 0;
+    margin : 0;
+}
+* {
+   box-sizing : border-box; 
+}
+.container {
+}
+.row {
+    width : 100%;
+    padding : 0 5px;
+    background-color : #EFEFFF;
+}
+h1 {
+    text-align : center;
+    font-size : 1.75em;
+}
+section.section-1 {
+    background-color : #FFEFEF;
+}
+section.section-1 > h1 {
+    background-color : #FF9F9F;
+}
+section.section-2 {
+    background-color : #FFEFB0;
+}
+section.section-2 > h1 {
+    background-color : #FF9F30;
+}
+section.section-3 {
+    background-color : #FFFFD0;
+}
+section.section-3 > h1 {
+    background-color : #FFFF00;
+}
+
+section {
+    float : left;
+    border-color : black;
+    border : 1px solid black;
+    margin : 10px;
+    height : 100%;
+}
+section>h1 {
+    float : right;
+    border : 1px solid black;
+    margin : 0px;
+    padding : 0px 30px;
+    font-size : 1.25em;
+}
+p {
+    clear : right;
+    padding : 10px
+}
+
+@media (min-width : 992px) {
+    .col-lg-4 {
+        width : 33.3%;
+        float : left;
+        display: table-cell;
+        background-color : #EFFFFF;
+        height : 100%;
+    }
+}
+@media (min-width : 768px) and (max-width : 991px) {
+    .col-md-6 {
+        width : 50%;
+        float : left;
+        display: table-cell;
+        background-color : #EFFFFF;
+        height : 100%;
+    }
+    .col-md-12 {
+        width : 100%;
+        clear : both;
+    }
+}
+@media (max-width : 767px) {
+    .col-sm-12 {
+        width : 100%;
+        clear : both;
+    }
+}
