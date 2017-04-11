@@ -63,7 +63,6 @@ p {
         width : 33.3%;
         float : left;
         display: table-cell;
-        background-color : #EFFFFF;
         height : 100%;
     }
 }
@@ -72,7 +71,6 @@ p {
         width : 50%;
         float : left;
         display: table-cell;
-        background-color : #EFFFFF;
         height : 100%;
     }
     .col-md-12 {
